@@ -92,3 +92,14 @@ This is a personal learning project, and even though it hasn't been updated for 
 I'm thankful to all those who have pointed out bugs and submitted pull requests. I will need some time to review everything and I cannot guarantee that at this moment.
 
 Please feel free to fork this repo. If many of you are interested in continuing the project, let me know and I'll link the "main fork" from here.
+
+
+Debugging
+---------
+
+nasm boot_sect_hello.asm -f elf -g -o boot_sect_hello.elf
+objcopy -O binary boot_sect_hello.elf boot_sect_hello.img
+qemu-system-i386 -s -S -fda boot_sect_hello.img -boot a
+gdb
+symbol-file boot_sect_hello.elf
+target remote localhost:1234
